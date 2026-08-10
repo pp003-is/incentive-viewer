@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>2026年7月稼働 メディカル事業部インセン・手当</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💴</text></svg>">
+<style>
+  :root{
+    --ink:#1f2733; --sub:#6b7684; --line:#e2e6ec;
+    --bg:#f7f8fa; --card:#ffffff;
+    --accent:#2f6f5e; --accent-soft:#eaf3f0;
+    --zero:#b6bcc5; --pena:#b4453c; --pena-bg:#fdf3f2;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; padding:26px 16px 60px;
+    font-family:"Meiryo UI","Meiryo",sans-serif;
+    background:var(--bg); color:var(--ink);
+    font-size:13px; line-height:1.6;
+  }
+  .wrap{max-width:760px;margin:0 auto}
+  h1{font-size:18px;margin:0 0 4px;font-weight:700;letter-spacing:.02em}
+  .lead{color:var(--sub);font-size:12px;margin:0 0 18px}
+
+
+  .bar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-bottom:12px}
+  select,button{
+    font-family:inherit;font-size:12px;padding:6px 10px;
+    border:1px solid var(--line);border-radius:6px;background:var(--card);color:var(--ink);cursor:pointer;
+  }
+  button:hover{background:var(--accent-soft);border-color:var(--accent)}
+  button.on{background:var(--pena-bg);border-color:var(--pena);color:var(--pena)}
+  .bar label{font-size:12px;color:var(--sub)}
+  .js-only{display:none}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+  table{width:100%;border-collapse:collapse;table-layout:fixed}
+  th,td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--line)}
+  th{font-size:11px;color:var(--sub);font-weight:400;background:#fafbfc;user-select:none}
+  th[data-k]{cursor:pointer}
+  th[data-k]:hover{color:var(--accent)}
+  th .arw{opacity:.3;margin-left:2px}
+  th.on{color:var(--accent);font-weight:700}
+  th.on .arw{opacity:1}
+  td.num,th.num{text-align:right;font-variant-numeric:tabular-nums}
+
+  col.c-no{width:34px} col.c-nm{width:24%} col.c-em{width:20%}
+  col.c-jb{width:74px} col.c-pay{width:auto} col.c-ho{width:20%}
+
+  td.no{color:var(--sub);font-variant-numeric:tabular-nums;font-size:11px}
+  td.nm,td.em{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  tbody tr:hover{background:#f9fbfa}
+  tbody tr.pena{background:var(--pena-bg)}
+  tbody tr.pena:hover{background:#fbebe9}
+  .zero,span.zero{color:var(--zero)}
+  .amt.cut{color:var(--pena);font-weight:700}
+  .pill{
+    display:inline-block;margin-left:5px;padding:0 5px;
+    border-radius:9px;background:var(--pena);color:#fff;
+    font-size:10px;line-height:15px;vertical-align:1px;cursor:help;white-space:nowrap;
+  }
+  .tag{display:inline-block;padding:1px 6px;border-radius:10px;background:#f0f2f5;color:var(--sub);font-size:11px}
+  tfoot td{font-weight:700;background:#fafbfc;border-bottom:none}
+  .note{margin-top:10px;font-size:11px;color:var(--sub)}
+  @media(max-width:520px){
+    body{padding:18px 8px 40px}
+    th,td{padding:6px 6px}
+    col.c-em{width:0} th.em,td.em{display:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>2026年7月稼働　メディカル事業部インセン・手当</h1>
+  <p class="lead">営業歩合はペナルティ減額後の着地額。<span class="pill">−20%</span> が付いている行は減額あり（金額にカーソルを合わせると内訳）。</p>
+
+  <div class="bar js-only" id="bar">
+    <label for="emp">雇用</label>
+    <select id="emp"><option value="">すべて</option><option value="宜興会">宜興会</option><option value="インターシフト">インターシフト</option><option value="WrapMarketing">WrapMarketing</option></select>
+    <label for="job">職種</label>
+    <select id="job"><option value="">すべて</option><option value="CC">CC</option><option value="アトムCS">アトムCS</option><option value="痩身CS">痩身CS</option><option value="CA">CA</option><option value="CS">CS</option></select>
+    <button id="only">ペナありのみ</button>
+    <button id="copy">表をコピー</button>
+  </div>
+
+  <div class="card">
+    <table id="tbl">
+      <colgroup>
+        <col class="c-no"><col class="c-nm"><col class="c-em">
+        <col class="c-jb"><col class="c-pay"><col class="c-ho">
+      </colgroup>
+      <thead><tr>
+        <th></th>
+        <th data-k="nm">名前<span class="arw">↕</span></th>
+        <th data-k="em" class="em">雇用<span class="arw">↕</span></th>
+        <th data-k="jb">職種<span class="arw">↕</span></th>
+        <th data-k="pay" class="num">営業歩合<span class="arw">↕</span></th>
+        <th data-k="ho" class="num">休日出勤<span class="arw">↕</span></th>
+      </tr></thead>
+      <tbody id="body">
+<tr class="pena" data-r="20" data-b="136023" data-c="27205"><td class="no">1</td><td class="nm">杉浦 秀樹</td><td class="em">宜興会</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥136,023 → 20%減額 −¥27,205">¥108,818</span><span class="pill" title="減額前 ¥136,023 → 20%減額 −¥27,205">−20%</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="122029" data-c="0"><td class="no">2</td><td class="nm">渕邊 翔里</td><td class="em">宜興会</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥122,029</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="289967" data-c="0"><td class="no">3</td><td class="nm">林﨑 健</td><td class="em">宜興会</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥289,967</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="140663" data-c="0"><td class="no">4</td><td class="nm">高田 順之</td><td class="em">宜興会</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥140,663</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="70906" data-c="0"><td class="no">5</td><td class="nm">下﨑 哲史</td><td class="em">宜興会</td><td><span class="tag">アトムCS</span></td><td class="num pay"><span class="amt">¥70,906</span></td><td class="num">¥30,000</td></tr>
+<tr data-r="0" data-b="0" data-c="0"><td class="no">6</td><td class="nm">土崎 貴宏</td><td class="em">宜興会</td><td><span class="tag">アトムCS</span></td><td class="num pay"><span class="amt zero">¥0</span></td><td class="num">¥30,000</td></tr>
+<tr data-r="0" data-b="175588" data-c="0"><td class="no">7</td><td class="nm">朝長 泰志</td><td class="em">宜興会</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥175,588</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="4976" data-c="0"><td class="no">8</td><td class="nm">堤 亮介</td><td class="em">宜興会</td><td><span class="tag">アトムCS</span></td><td class="num pay"><span class="amt">¥4,976</span></td><td class="num zero">¥0</td></tr>
+<tr class="pena" data-r="50" data-b="26594" data-c="13297"><td class="no">9</td><td class="nm">曲 泰史</td><td class="em">宜興会</td><td><span class="tag">アトムCS</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥26,594 → 50%減額 −¥13,297">¥13,297</span><span class="pill" title="減額前 ¥26,594 → 50%減額 −¥13,297">−50%</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="1193190" data-c="0"><td class="no">10</td><td class="nm">前園 浩一</td><td class="em">宜興会</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt">¥1,193,190</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="117551" data-c="0"><td class="no">11</td><td class="nm">堀 崇弘</td><td class="em">インターシフト</td><td><span class="tag">アトムCS</span></td><td class="num pay"><span class="amt">¥117,551</span></td><td class="num">¥30,000</td></tr>
+<tr class="pena" data-r="20" data-b="100503" data-c="20101"><td class="no">12</td><td class="nm">根市 裕久</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥100,503 → 20%減額 −¥20,101">¥80,402</span><span class="pill" title="減額前 ¥100,503 → 20%減額 −¥20,101">−20%</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="157653" data-c="0"><td class="no">13</td><td class="nm">丸子 修人</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥157,653</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="47860" data-c="0"><td class="no">14</td><td class="nm">高橋 悠</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥47,860</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="123609" data-c="0"><td class="no">15</td><td class="nm">福井 啓介</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥123,609</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="206666" data-c="0"><td class="no">16</td><td class="nm">笹渕 了大</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥206,666</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="9750" data-c="0"><td class="no">17</td><td class="nm">井上 悠輝</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥9,750</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="377407" data-c="0"><td class="no">18</td><td class="nm">中山 達也</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥377,407</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="279822" data-c="0"><td class="no">19</td><td class="nm">清水 優太</td><td class="em">インターシフト</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt">¥279,822</span></td><td class="num">¥252,500</td></tr>
+<tr data-r="0" data-b="1336990" data-c="0"><td class="no">20</td><td class="nm">時尾 信一郎</td><td class="em">インターシフト</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt">¥1,336,990</span></td><td class="num zero">¥0</td></tr>
+<tr class="pena" data-r="20" data-b="90552" data-c="18110"><td class="no">21</td><td class="nm">椎名 諒</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥90,552 → 20%減額 −¥18,110">¥72,442</span><span class="pill" title="減額前 ¥90,552 → 20%減額 −¥18,110">−20%</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="92602" data-c="0"><td class="no">22</td><td class="nm">高橋 龍巳</td><td class="em">インターシフト</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt">¥92,602</span></td><td class="num">¥252,500</td></tr>
+<tr data-r="20" data-b="0" data-c="0"><td class="no">23</td><td class="nm">木村 航大</td><td class="em">インターシフト</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt zero">¥0</span></td><td class="num">¥240,000</td></tr>
+<tr data-r="0" data-b="1298463" data-c="0"><td class="no">24</td><td class="nm">細川 賢人</td><td class="em">インターシフト</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt">¥1,298,463</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="452452" data-c="0"><td class="no">25</td><td class="nm">吉岡 七尋</td><td class="em">インターシフト</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt">¥452,452</span></td><td class="num">¥105,000</td></tr>
+<tr data-r="0" data-b="0" data-c="0"><td class="no">26</td><td class="nm">小澤 亮太</td><td class="em">インターシフト</td><td><span class="tag">CA</span></td><td class="num pay"><span class="amt zero">¥0</span></td><td class="num">¥90,000</td></tr>
+<tr data-r="0" data-b="104542" data-c="0"><td class="no">27</td><td class="nm">石川 光雅</td><td class="em">インターシフト</td><td><span class="tag">CA</span></td><td class="num pay"><span class="amt">¥104,542</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="102719" data-c="0"><td class="no">28</td><td class="nm">宮本 康平</td><td class="em">インターシフト</td><td><span class="tag">CA</span></td><td class="num pay"><span class="amt">¥102,719</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="168684" data-c="0"><td class="no">29</td><td class="nm">石橋 陽輝</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥168,684</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="47637" data-c="0"><td class="no">30</td><td class="nm">淺井 美沙緒</td><td class="em">インターシフト</td><td><span class="tag">CA</span></td><td class="num pay"><span class="amt">¥47,637</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="68344" data-c="0"><td class="no">31</td><td class="nm">梁本 哲志</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥68,344</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="129424" data-c="0"><td class="no">32</td><td class="nm">守屋 一馬</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥129,424</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="45635" data-c="0"><td class="no">33</td><td class="nm">佐藤 愛</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥45,635</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="247033" data-c="0"><td class="no">34</td><td class="nm">中道 佑哉</td><td class="em">インターシフト</td><td><span class="tag">アトムCS</span></td><td class="num pay"><span class="amt">¥247,033</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="400000" data-c="0"><td class="no">35</td><td class="nm">御園 優</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥400,000</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="572809" data-c="0"><td class="no">36</td><td class="nm">笹島 瞳子</td><td class="em">インターシフト</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt">¥572,809</span></td><td class="num">¥25,000</td></tr>
+<tr class="pena" data-r="20" data-b="292631" data-c="58526"><td class="no">37</td><td class="nm">宮森 優紀</td><td class="em">インターシフト</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥292,631 → 20%減額 −¥58,526">¥234,105</span><span class="pill" title="減額前 ¥292,631 → 20%減額 −¥58,526">−20%</span></td><td class="num">¥37,500</td></tr>
+<tr data-r="0" data-b="0" data-c="0"><td class="no">38</td><td class="nm">丸橋 綾子</td><td class="em">インターシフト</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt zero">¥0</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="33524" data-c="0"><td class="no">39</td><td class="nm">富山 昂平</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥33,524</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="42441" data-c="0"><td class="no">40</td><td class="nm">稲垣 英寿</td><td class="em">WrapMarketing</td><td><span class="tag">アトムCS</span></td><td class="num pay"><span class="amt">¥42,441</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="216580" data-c="0"><td class="no">41</td><td class="nm">萌崇 拓見</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥216,580</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="124304" data-c="0"><td class="no">42</td><td class="nm">藤野 清風</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥124,304</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="252395" data-c="0"><td class="no">43</td><td class="nm">山内 陵</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥252,395</span></td><td class="num zero">¥0</td></tr>
+<tr class="pena" data-r="20" data-b="121376" data-c="24275"><td class="no">44</td><td class="nm">松岡 丈真</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥121,376 → 20%減額 −¥24,275">¥97,101</span><span class="pill" title="減額前 ¥121,376 → 20%減額 −¥24,275">−20%</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="113142" data-c="0"><td class="no">45</td><td class="nm">藤本 康平</td><td class="em">WrapMarketing</td><td><span class="tag">アトムCS</span></td><td class="num pay"><span class="amt">¥113,142</span></td><td class="num zero">¥0</td></tr>
+<tr class="pena" data-r="20" data-b="127313" data-c="25463"><td class="no">46</td><td class="nm">佐々木 龍一</td><td class="em">WrapMarketing</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥127,313 → 20%減額 −¥25,463">¥101,850</span><span class="pill" title="減額前 ¥127,313 → 20%減額 −¥25,463">−20%</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="250976" data-c="0"><td class="no">47</td><td class="nm">日高 智憲</td><td class="em">WrapMarketing</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt">¥250,976</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="10232" data-c="0"><td class="no">48</td><td class="nm">五反田 真一</td><td class="em">WrapMarketing</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt">¥10,232</span></td><td class="num">¥117,500</td></tr>
+<tr class="pena" data-r="20" data-b="198245" data-c="39649"><td class="no">49</td><td class="nm">田中 直樹</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥198,245 → 20%減額 −¥39,649">¥158,596</span><span class="pill" title="減額前 ¥198,245 → 20%減額 −¥39,649">−20%</span></td><td class="num zero">¥0</td></tr>
+<tr class="pena" data-r="20" data-b="52703" data-c="10541"><td class="no">50</td><td class="nm">蓬莱 庸太</td><td class="em">WrapMarketing</td><td><span class="tag">痩身CS</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥52,703 → 20%減額 −¥10,541">¥42,162</span><span class="pill" title="減額前 ¥52,703 → 20%減額 −¥10,541">−20%</span></td><td class="num">¥68,750</td></tr>
+<tr data-r="0" data-b="0" data-c="0"><td class="no">51</td><td class="nm">渕上 賢人</td><td class="em">WrapMarketing</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt zero">¥0</span></td><td class="num">¥105,000</td></tr>
+<tr data-r="0" data-b="167772" data-c="0"><td class="no">52</td><td class="nm">椎野 碧斗</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt">¥167,772</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="33071" data-c="0"><td class="no">53</td><td class="nm">奥長 謙太郎</td><td class="em">WrapMarketing</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt">¥33,071</span></td><td class="num zero">¥0</td></tr>
+<tr class="pena" data-r="20" data-b="40111" data-c="8022"><td class="no">54</td><td class="nm">神林 宏企</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt cut" title="減額前 ¥40,111 → 20%減額 −¥8,022">¥32,089</span><span class="pill" title="減額前 ¥40,111 → 20%減額 −¥8,022">−20%</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="15732" data-c="0"><td class="no">55</td><td class="nm">美濃 翔太</td><td class="em">WrapMarketing</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt">¥15,732</span></td><td class="num">¥111,250</td></tr>
+<tr data-r="0" data-b="40180" data-c="0"><td class="no">56</td><td class="nm">田井 康義</td><td class="em">WrapMarketing</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt">¥40,180</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="20" data-b="0" data-c="0"><td class="no">57</td><td class="nm">渡邊 すみれ</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt zero">¥0</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="13294" data-c="0"><td class="no">58</td><td class="nm">岡田 荘太</td><td class="em">WrapMarketing</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt">¥13,294</span></td><td class="num">¥62,500</td></tr>
+<tr data-r="0" data-b="0" data-c="0"><td class="no">59</td><td class="nm">伊藤 真也</td><td class="em">WrapMarketing</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt zero">¥0</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="0" data-c="0"><td class="no">60</td><td class="nm">小石原 拓馬</td><td class="em">WrapMarketing</td><td><span class="tag">CC</span></td><td class="num pay"><span class="amt zero">¥0</span></td><td class="num zero">¥0</td></tr>
+<tr data-r="0" data-b="0" data-c="0"><td class="no">61</td><td class="nm">澤井 拓也</td><td class="em">WrapMarketing</td><td><span class="tag">CS</span></td><td class="num pay"><span class="amt zero">¥0</span></td><td class="num">¥25,000</td></tr>
+      </tbody>
+      <tfoot><tr>
+        <td></td><td colspan="2">合計</td><td class="em"></td>
+        <td class="num" id="s1">¥10,639,476</td>
+        <td class="num" id="s2">¥1,582,500</td>
+      </tr></tfoot>
+    </table>
+  </div>
+  <p class="note">お弁当・臨時手当は含みません。</p>
+</div>
+
+<script>
+document.getElementById("bar").style.display = "flex";
+
+const body = document.getElementById("body");
+const all = [...body.querySelectorAll("tr")].map(tr=>{
+  const td = tr.children;
+  return {
+    tr,
+    nm: td[1].textContent.trim(),
+    em: td[2].textContent.trim(),
+    jb: td[3].textContent.trim(),
+    pay: Number(td[4].querySelector(".amt").textContent.replace(/[^0-9]/g,"")),
+    ho: Number(td[5].textContent.replace(/[^0-9]/g,"")),
+    rate: Number(tr.dataset.r),
+    before: Number(tr.dataset.b),
+    cutv: Number(tr.dataset.c)
+  };
+});
+
+const emp = document.getElementById("emp"), job = document.getElementById("job");
+const only = document.getElementById("only"), copy = document.getElementById("copy");
+let key = null, asc = true, onlyPena = false;
+const yen = n => "¥" + n.toLocaleString("ja-JP");
+
+function render(){
+  let rows = all.filter(r =>
+    (!emp.value || r.em===emp.value) &&
+    (!job.value || r.jb===job.value) &&
+    (!onlyPena || r.cutv > 0));
+  if(key){
+    rows = rows.slice().sort((a,b)=>{
+      const x=a[key], y=b[key];
+      const c = (typeof x==="number") ? x-y : String(x).localeCompare(String(y),"ja");
+      return asc ? c : -c;
+    });
+  }
+  body.replaceChildren(...rows.map((r,i)=>{ r.tr.children[0].textContent=i+1; return r.tr; }));
+  document.getElementById("s1").textContent = yen(rows.reduce((s,r)=>s+r.pay,0));
+  document.getElementById("s2").textContent = yen(rows.reduce((s,r)=>s+r.ho,0));
+  document.querySelectorAll("th[data-k]").forEach(th=>{
+    const on = th.dataset.k === key;
+    th.classList.toggle("on", on);
+    th.querySelector(".arw").textContent = on ? (asc?"↑":"↓") : "↕";
+  });
+}
+document.querySelectorAll("th[data-k]").forEach(th=>{
+  th.addEventListener("click", ()=>{
+    const k = th.dataset.k;
+    if(key===k){ asc=!asc; } else { key=k; asc=true; }
+    render();
+  });
+});
+emp.addEventListener("change", render);
+job.addEventListener("change", render);
+only.addEventListener("click", ()=>{
+  onlyPena = !onlyPena;
+  only.classList.toggle("on", onlyPena);
+  only.textContent = onlyPena ? "全員を表示" : "ペナありのみ";
+  render();
+});
+copy.addEventListener("click", async ()=>{
+  const rows = [...body.querySelectorAll("tr")].map(tr=>{
+    const r = all.find(x=>x.tr===tr);
+    return [r.nm, r.em, r.jb, r.rate ? r.rate+"%" : "", r.pay, r.ho].join("\t");
+  });
+  await navigator.clipboard.writeText(["名前\t雇用\t職種\tペナ率\t営業歩合\t休日出勤", ...rows].join("\n"));
+  copy.textContent = "コピーしました";
+  setTimeout(()=>copy.textContent="表をコピー", 1400);
+});
+render();
+</script>
+</body>
+</html>
